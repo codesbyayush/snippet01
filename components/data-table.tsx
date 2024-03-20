@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { vs } from "react-syntax-highlighter/dist/esm/styles/prism";
-import { getAllSnippets } from "@/assignment-project/actions/getAllSnippets";
+import { getAllSnippets } from "@/actions/getAllSnippets";
 import { SelectSnippet } from "@/db/drizzle/schema";
 
 async function DataTable() {

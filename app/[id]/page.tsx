@@ -1,4 +1,4 @@
-import { getSnippetById } from "@/assignment-project/actions/getSnippetById";
+import { getSnippetById } from "@/actions/getSnippetById";
 import { SelectSnippet } from "@/db/drizzle/schema";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { vs } from "react-syntax-highlighter/dist/esm/styles/prism";

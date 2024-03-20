@@ -1,4 +1,4 @@
-import DataForm from "@/assignment-project/components/data-form";
+import DataForm from "@/components/data-form";
 
 function NewSnippetPage() {
   return <DataForm />;
