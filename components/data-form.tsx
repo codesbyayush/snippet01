@@ -2,6 +2,8 @@
 import { InsertSnippet } from "@/db/drizzle/schema";
 import Link from "next/link";
 import { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const languages = ["java", "cpp", "c", "python"];
 
@@ -12,10 +14,20 @@ function DataForm() {
   const [code, setCode] = useState("");
   const [open, setOpen] = useState(false);
 
+  const notify = () =>
+    toast("Submitted code...", {
+      toastId: "submission",
+      autoClose: 2000,
+      type: "info",
+    });
   const addSnippet = async (data: InsertSnippet) => {
-    await fetch("/api/addsnippet", {
+    const res = await fetch("/api/addsnippet", {
       method: "POST",
       body: JSON.stringify(data),
+    });
+    toast.update("submission", {
+      type: "success",
+      autoClose: 2000,
     });
   };
   const handleSubmission = async () => {
@@ -25,12 +37,13 @@ function DataForm() {
       language,
       stdin,
     };
+    notify();
     await addSnippet(data);
-    // await addSnippet(data);
   };
 
   return (
     <div className="min-h-screen flex flex-col place-content-center justify-center items-center bg-sky-200 p-6 relative">
+      <ToastContainer />
       <form
         action={handleSubmission}
         className="bg-zinc-100/50 h-full w-full flex flex-col gap-4 max-w-lg mx-auto px-8 py-8 rounded-xl shadow-xl"

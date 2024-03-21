@@ -14,7 +14,7 @@ export async function POST(req: Request) {
   });
   const db = drizzle(connection);
   const data = await req.json();
-  await db.insert(snippet).values(data);
+  const res = await db.insert(snippet).values(data);
   revalidatePath("/");
   return Response.json({ response: 201 });
 }
